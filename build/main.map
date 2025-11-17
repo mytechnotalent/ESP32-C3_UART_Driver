@@ -1,0 +1,170 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+iram0            0x4037c000         0x00004000         xrw
+dram1            0x3fc80000         0x00060000         rw
+iucache          0x42000000         0x00800000         x
+ducache          0x3c000000         0x00800000         r
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x42000000      0x380 load address 0x3c000000
+                0x42000000                        _text_start = .
+ *(.text.init)
+ .text.init     0x42000000        0xa build/startup.o
+                0x42000000                _start
+ *(.text)
+ .text          0x4200000a       0xaa build/gpio.o
+                0x4200000a                gpio_input_enable
+                0x42000020                gpio_output_enable
+                0x4200003c                gpio_output_func_select
+                0x42000050                gpio_read
+                0x42000070                gpio_write
+                0x4200008c                gpio_toggle
+ *fill*         0x420000b4        0x0 
+ .text          0x420000b4        0xe build/main.o
+                0x420000b4                main
+ .text          0x420000c2        0x0 build/startup.o
+ .text          0x420000c2       0x62 build/systimer.o
+                0x420000fc                delay_us
+                0x4200010e                delay_ms
+ .text          0x42000124      0x17e build/uart.o
+                0x42000124                uart_init
+                0x42000172                uart_getchar
+                0x420001aa                uart_putchar
+                0x420001fe                uart_echo
+                0x42000286                uart_print_string
+ .text          0x420002a2       0x42 build/usb.o
+                0x420002a2                usb_cdc_read
+                0x420002ac                usb_cdc_is_read_ready
+                0x420002bc                usb_cdc_write
+                0x420002c6                usb_cdc_is_write_ready
+                0x420002d6                usb_cdc_write_flush
+ .text          0x420002e4       0x9c build/wdt.o
+                0x420002f4                wdt_disable
+ *(.text*)
+                0x42000380                        . = ALIGN (0x4)
+                0x42000380                        _text_end = .
+                0x00000380                        _text_size = (_text_end - _text_start)
+
+.data           0x3fc80000        0x0
+                0x3fc80000                        . = ALIGN (0x10)
+                0x3fc80000                        _data_start = .
+ *(.data)
+ .data          0x3fc80000        0x0 build/gpio.o
+ .data          0x3fc80000        0x0 build/main.o
+ .data          0x3fc80000        0x0 build/startup.o
+ .data          0x3fc80000        0x0 build/systimer.o
+ .data          0x3fc80000        0x0 build/uart.o
+ .data          0x3fc80000        0x0 build/usb.o
+ .data          0x3fc80000        0x0 build/wdt.o
+ *(.data*)
+ *(.sdata)
+ *(.sdata*)
+ *(.rodata)
+ *(.rodata*)
+                0x3fc80000                        . = ALIGN (0x10)
+                0x3fc80000                        _data_end = .
+                0x00000000                        _data_size = (_data_end - _data_start)
+                0x3fc80000                        _data_loadaddr = LOADADDR (.data)
+
+.bss            0x3fc80000        0x0
+                0x3fc80000                        . = ALIGN (0x10)
+                0x3fc80000                        _bss_start = .
+ *(.bss)
+ .bss           0x3fc80000        0x0 build/gpio.o
+ .bss           0x3fc80000        0x0 build/main.o
+ .bss           0x3fc80000        0x0 build/startup.o
+ .bss           0x3fc80000        0x0 build/systimer.o
+ .bss           0x3fc80000        0x0 build/uart.o
+ .bss           0x3fc80000        0x0 build/usb.o
+ .bss           0x3fc80000        0x0 build/wdt.o
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+                0x3fc80000                        . = ALIGN (0x10)
+                0x3fc80000                        _bss_end = .
+                0x00000000                        _bss_size = (_bss_end - _bss_start)
+LOAD build/gpio.o
+LOAD build/main.o
+LOAD build/startup.o
+LOAD build/systimer.o
+LOAD build/uart.o
+LOAD build/usb.o
+LOAD build/wdt.o
+OUTPUT(build/main.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x00000000       0x2d
+ .riscv.attributes
+                0x00000000       0x2d build/gpio.o
+ .riscv.attributes
+                0x0000002d       0x2d build/main.o
+ .riscv.attributes
+                0x0000005a       0x2d build/startup.o
+ .riscv.attributes
+                0x00000087       0x2d build/systimer.o
+ .riscv.attributes
+                0x000000b4       0x2d build/uart.o
+ .riscv.attributes
+                0x000000e1       0x2d build/usb.o
+ .riscv.attributes
+                0x0000010e       0x2d build/wdt.o
+
+.debug_line     0x00000000      0x799
+ .debug_line    0x00000000      0x152 build/gpio.o
+ .debug_line    0x00000152       0x5c build/main.o
+ .debug_line    0x000001ae       0x47 build/startup.o
+ .debug_line    0x000001f5      0x10e build/systimer.o
+ .debug_line    0x00000303      0x30e build/uart.o
+ .debug_line    0x00000611       0xa9 build/usb.o
+ .debug_line    0x000006ba       0xdf build/wdt.o
+
+.debug_info     0x00000000      0x261
+ .debug_info    0x00000000       0x7b build/gpio.o
+ .debug_info    0x0000007b       0x35 build/main.o
+ .debug_info    0x000000b0       0x35 build/startup.o
+ .debug_info    0x000000e5       0x5f build/systimer.o
+ .debug_info    0x00000144       0x6d build/uart.o
+ .debug_info    0x000001b1       0x6d build/usb.o
+ .debug_info    0x0000021e       0x43 build/wdt.o
+
+.debug_abbrev   0x00000000       0xe7
+ .debug_abbrev  0x00000000       0x21 build/gpio.o
+ .debug_abbrev  0x00000021       0x21 build/main.o
+ .debug_abbrev  0x00000042       0x21 build/startup.o
+ .debug_abbrev  0x00000063       0x21 build/systimer.o
+ .debug_abbrev  0x00000084       0x21 build/uart.o
+ .debug_abbrev  0x000000a5       0x21 build/usb.o
+ .debug_abbrev  0x000000c6       0x21 build/wdt.o
+
+.debug_aranges  0x00000000       0xe0
+ .debug_aranges
+                0x00000000       0x20 build/gpio.o
+ .debug_aranges
+                0x00000020       0x20 build/main.o
+ .debug_aranges
+                0x00000040       0x20 build/startup.o
+ .debug_aranges
+                0x00000060       0x20 build/systimer.o
+ .debug_aranges
+                0x00000080       0x20 build/uart.o
+ .debug_aranges
+                0x000000a0       0x20 build/usb.o
+ .debug_aranges
+                0x000000c0       0x20 build/wdt.o
+
+.debug_str      0x00000000      0x1e3
+ .debug_str     0x00000000      0x1e3 build/gpio.o
+                                 0xa9 (size before relaxing)
+ .debug_str     0x000001e3       0x50 build/main.o
+ .debug_str     0x000001e3       0x55 build/startup.o
+ .debug_str     0x000001e3       0x85 build/systimer.o
+ .debug_str     0x000001e3       0x8b build/uart.o
+ .debug_str     0x000001e3       0xa6 build/usb.o
+ .debug_str     0x000001e3       0x5f build/wdt.o
