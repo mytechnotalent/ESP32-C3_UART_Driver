@@ -1,17 +1,22 @@
 <img src="https://github.com/mytechnotalent/ESP32-C3_UART_Driver/blob/main/ESP32-C3_UART_Driver.png?raw=true">
 
 ## FREE Reverse Engineering Self-Study Course [HERE](https://github.com/mytechnotalent/Reverse-Engineering-Tutorial)
+### VIDEO PROMO [HERE](https://www.youtube.com/watch?v=aD7X9sXirF8)
 
 <br>
 
 # ESP32-C3 UART Driver
 An ESP32-C3 UART driver written entirely in RISC-V Assembler.
 
+<br>
+
 # Install ESP Toolchain
 ## Windows Installer
 [HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/windows-setup.html)
 ## Linux and macOS Installer
 [HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/linux-macos-setup.html)
+
+<br>
 
 # startup Code
 ```
@@ -601,5 +606,5 @@ main:
 
 <br>
 
-## License
+# License
 [Apache License 2.0](https://github.com/mytechnotalent/ESP32-C3_UART_Driver/blob/main/LICENSE)
