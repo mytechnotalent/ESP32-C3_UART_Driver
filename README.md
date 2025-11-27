@@ -11,10 +11,8 @@ An ESP32-C3 UART driver written entirely in RISC-V Assembler.
 <br>
 
 # Install ESP Toolchain
-## Windows Installer
-[HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/windows-setup.html)
-## Linux and macOS Installer
-[HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/linux-macos-setup.html)
+## Windows Installer [HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/windows-setup.html)
+## Linux and macOS Installer [HERE](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/get-started/linux-macos-setup.html)
 
 <br>
 
