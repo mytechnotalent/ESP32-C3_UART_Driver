@@ -16,6 +16,15 @@ An ESP32-C3 UART driver written entirely in RISC-V Assembler.
 
 <br>
 
+# Hardware
+## ESP32-C3 Super Mini [BUY](https://www.amazon.com/Teyleten-Robot-Development-Supermini-Bluetooth/dp/B0D47G24W3)
+## USB-C to USB Cable [BUY](https://www.amazon.com/USB-Cable-10Gbps-Transfer-Controller/dp/B09WKCT26M)
+## Complete Component Kit for Raspberry Pi [BUY](https://www.pishop.us/product/complete-component-kit-for-raspberry-pi)
+## 10pc 25v 1000uF Capacitor [BUY](https://www.amazon.com/Cionyce-Capacitor-Electrolytic-CapacitorsMicrowave/dp/B0B63CCQ2N?th=1)
+### 10% PiShop DISCOUNT CODE - KVPE_HS320548_10PC
+
+<br>
+
 # startup Code
 ```
 /*
