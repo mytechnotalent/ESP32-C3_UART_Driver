@@ -26,7 +26,6 @@
 .global main
 .type main, %function
 main:
-  .p2align 2
   addi  sp, sp, -16                              # allocate stack space
   sw    ra, 12(sp)                               # save return address
   call  uart_init                                # initialize UART (USB CDC and UART0)

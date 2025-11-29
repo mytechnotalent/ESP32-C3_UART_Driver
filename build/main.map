@@ -26,7 +26,6 @@ Linker script and memory map
                 0x42000050                gpio_read
                 0x42000070                gpio_write
                 0x4200008c                gpio_toggle
- *fill*         0x420000b4        0x0 
  .text          0x420000b4        0xe build/main.o
                 0x420000b4                main
  .text          0x420000c2        0x0 build/startup.o

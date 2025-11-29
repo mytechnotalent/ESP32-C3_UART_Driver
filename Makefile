@@ -9,7 +9,15 @@
 # UPDATE DATE: November 14, 2025
 # 
 
-CROSS ?= riscv32-esp-elf-
+SHELL := /bin/bash
+
+# ESP-IDF toolchain paths
+ESP_TOOLS_PATH := $(HOME)/.espressif/tools
+RISCV_PATH := $(ESP_TOOLS_PATH)/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin
+OPENOCD_PATH := $(ESP_TOOLS_PATH)/openocd-esp32/v0.12.0-esp32-20250707/openocd-esp32/bin
+GDB_PATH := $(ESP_TOOLS_PATH)/riscv32-esp-elf-gdb/16.2_20250324/riscv32-esp-elf-gdb/bin
+
+CROSS ?= $(RISCV_PATH)/riscv32-esp-elf-
 AS := $(CROSS)as
 LD := $(CROSS)ld
 OBJCOPY := $(CROSS)objcopy
@@ -24,17 +32,17 @@ LDFLAGS ?= -g -T linker/linker.ld -Map $(BUILDDIR)/main.map
 SRCS := $(wildcard $(SRCDIR)/*.s)
 OBJS := $(patsubst $(SRCDIR)/%.s,$(BUILDDIR)/%.o,$(SRCS))
 
-ESPTOOL ?= esptool.py
+ESPTOOL := $(HOME)/.espressif/python_env/idf5.5_py3.12_env/bin/esptool.py
 CHIP ?= esp32c3
 PORT ?= /dev/tty.usbmodem3101
 CHIP_DIR ?= .
 MAIN_BIN := $(BUILDDIR)/main.bin
 MAIN_E2I := $(BUILDDIR)/main.e2i
 
-OPENOCD ?= openocd
+OPENOCD := $(OPENOCD_PATH)/openocd
 OPENOCD_ARGS ?= -f board/esp32c3-builtin.cfg
 
-GDB := ~/.espressif/tools/riscv32-esp-elf-gdb/16.2_20250324/riscv32-esp-elf-gdb/bin/riscv32-esp-elf-gdb-no-python
+GDB := $(GDB_PATH)/riscv32-esp-elf-gdb-no-python
 
 .PHONY: all clean flash flash_partboot flash_raw gdb openocd
 
